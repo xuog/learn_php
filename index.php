@@ -1,4 +1,4 @@
 <?php
-echo "Hello Word"
-echo "Xin chào"
+echo "Hello Word";
+echo "Xin chào";
 ?>
