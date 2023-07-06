@@ -1,223 +1,241 @@
  <?php
- class Point2D {
-    public $x;
-    public $y;
+ // Tạo một lớp XeHoi với các thuộc tính là hãng xe, màu sắc và năm sản xuất.
+// Tạo phương thức để hiển thị thông tin đầy đủ của xe.
 
-    public function __construct($x, $y) {
-        $this->x = $x;
-        $this->y = $y;
+//     class Car{
+//         public $trademark, $color, $yearOfManufacture;
+
+//         public function __construct($trademark, $color, $yearOfManufacture){
+//             $this -> trademark = $trademark;
+//             $this -> color = $color;
+//             $this -> yearOfManufacture = $yearOfManufacture;
+//         }
+
+//         public function getTrademark(){
+//             echo "Thông tin của xe:" ."<br>";
+//             echo "Hãng xe:" . $this-> trademark . "<br>";
+//             echo "Màu sắc:" . $this -> color . "<br>";
+//             echo "Năm sản xuất: ". $this -> yearOfManufacture ;
+
+//     }
+// }
+// $Car = new Car('BMW', 'Red', 1990);
+// $Car -> getTrademark();
+class Car{
+    public $trademark, $color, $yearOfManufacture;
+
+    public function __construct($trademark, $color, $yearOfManufacture){
+        $this -> trademark = $trademark;
+        $this -> color = $color;
+        $this -> yearOfManufacture = $yearOfManufacture;
     }
 
-    public function calculateDistance($otherPoint) {
-        $distanceX = $this->x - $otherPoint->x;
-        $distanceY = $this->y - $otherPoint->y;
-        $distance = sqrt(pow($distanceX, 2) + pow($distanceY, 2));
-        return $distance;
-    }
- }
+    public function getTrademark(){
+        echo "Thông tin của xe:" ."<br>";
+        echo "Hãng xe:" . $this-> trademark . "<br>";
+        echo "Màu sắc:" . $this -> color . "<br>";
+        echo "Năm sản xuất: ". $this -> yearOfManufacture ;
 
- $point1 = new Point2D(3, 4);
+}
+}
+$Car = new Car('BMW', 'Red', 1990);
+$Car -> getTrademark();
 
- $point2 = new Point2D(6, 8);
+// Câu 7: Bài tập Tạo lớp Phân số:
+// Tạo một lớp PhanSo với các thuộc tính tử số và mẫu số.
+// Tạo các phương thức để thực hiện các phép toán cộng, trừ, nhân và chia giữa các phân số.
 
- $distance = $point1->calculateDistance($point2);
- echo "The distance from point 1 to point 2 is: " . $distance;
- 
- Câu 3:
-class IntArray {
-     public $array;
+// class Fraction{
+//     public $numerator;
+//     public $denominator;
+class Fraction{
+    public $numerator;
+    public $denominator;
 
-     public function __construct($array) {
-         $this->array = $array;
-     }
-
-     public function calculateSum() {
-         $sum = array_sum($this->array);
-         return $sum;
-     }
-
-     public function calculateAverage() {
-         $count = count($this->array);
-         $sum = $this->calculateSum();
-         $average = $sum / $count;
-         return $average;
-     }
-
-     public function findMaxElement() {
-         $max = max($this->array);
-         return $max;
-     }
- }
-
- $array = [5, 10, 15, 20, 25];
-
-
- $intArray = new IntArray($array);
-
- $sum = $intArray->calculateSum();
- echo "The sum of the elements is: " . $sum . "<br>";
-
- $average = $intArray->calculateAverage();
- echo "The average of the elements in the array is: " . $average . "<br>";
-
- $max = $intArray->findMaxElement();
- echo "The largest element in the array is : " . $max;
-
-Câu 4:
-class Clock {
-    private $hours;
-    private $minutes;
-    private $seconds;
-
-    public function __construct($hours, $minutes, $seconds) {
-        $this->hours = $hours;
-        $this->minutes = $minutes;
-        $this->seconds = $seconds;
+//     public function __construct( $numerator, $denominator){
+//         $this -> numerator = $numerator;
+//         $this -> denominator = $denominator;
+//     }
+    public function __construct( $numerator, $denominator){
+        $this -> numerator = $numerator;
+        $this -> denominator = $denominator;
     }
 
-    public function displayTime() {
-        $time = sprintf("%02d:%02d:%02d", $this->hours, $this->minutes, $this->seconds);
-        return $time;
+//     public function sum($fraction){
+//         $sumNumerator = $this -> numerator *  $fraction -> denominator + $fraction -> numerator * $fraction -> denominator;
+//         $sumDenominator = $this -> denominator * $fraction -> denominator;
+//         return new Fraction($sumNumerator, $sumDenominator);
+//     }
+    public function sum($fraction){
+        $sumNumerator = $this -> numerator *  $fraction -> denominator + $fraction -> numerator * $fraction -> denominator;
+        $sumDenominator = $this -> denominator * $fraction -> denominator;
+        return new Fraction($sumNumerator, $sumDenominator);
     }
 
-    public function increaseSeconds($seconds) {
-        $this->seconds += $seconds;
+//     public function subtraction($fraction){
+//         $apartNumerator = $this -> numerator *  $fraction -> denominator - $fraction -> numerator * $fraction -> denominator;
+//         $apertDenominator = $this -> denominator * $fraction -> denominator;
+//         return new Fraction($apartNumerator, $apertDenominator);
+//     }
+    public function subtraction($fraction){
+        $apartNumerator = $this -> numerator *  $fraction -> denominator - $fraction -> numerator * $fraction -> denominator;
+        $apertDenominator = $this -> denominator * $fraction -> denominator;
+        return new Fraction($apartNumerator, $apertDenominator);
+    }
 
-        if ($this->seconds >= 60) {
-            $this->increaseMinutes(floor($this->seconds / 60));
-            $this->seconds %= 60;
+//     public function multiplication($fraction){
+//         $multiplyNumerator = $this -> numerator * $fraction -> numerator;
+//         $multiplyDenominator = $this -> denominator * $fraction -> denominator;
+//         return new Fraction($multiplyNumerator, $multiplyDenominator);
+//     }
+    public function multiplication($fraction){
+        $multiplyNumerator = $this -> numerator * $fraction -> numerator;
+        $multiplyDenominator = $this -> denominator * $fraction -> denominator;
+        return new Fraction($multiplyNumerator, $multiplyDenominator);
+    }
+
+//     public function division($fraction){
+//         $divisionNumerator = $this -> numerator * $fraction -> denominator;
+//         $divisionDenominator = $this -> denominator * $fraction -> numerator;
+//         return new Fraction($divisionNumerator, $divisionDenominator);
+//     }
+    public function division($fraction){
+        $divisionNumerator = $this -> numerator * $fraction -> denominator;
+        $divisionDenominator = $this -> denominator * $fraction -> numerator;
+        return new Fraction($divisionNumerator, $divisionDenominator);
+    }
+
+//     public function display(){
+//         echo $this->numerator . "/" . $this->denominator;
+//     }
+// }
+    public function display(){
+        echo $this->numerator . "/" . $this->denominator;
+    }
+}
+
+// $Fraction1 = new Fraction(1,2);
+// $Fraction2 = new Fraction(3,2);
+$Fraction1 = new Fraction(1,2);
+$Fraction2 = new Fraction(3,2);
+
+// $Sum = $Fraction1 -> sum($Fraction2);
+// echo "Tổng: ";
+// $Sum -> display();
+// echo '<br>';
+$Sum = $Fraction1 -> sum($Fraction2);
+echo "Tổng: ";
+$Sum -> display();
+echo '<br>';
+
+// $subtraction = $Fraction1 -> subtraction($Fraction2);
+// echo "Hiệu: ";
+// $subtraction -> display();
+// echo '<br>';
+$subtraction = $Fraction1 -> subtraction($Fraction2);
+echo "Hiệu: ";
+$subtraction -> display();
+echo '<br>';
+
+// $multiplication = $Fraction1 -> multiplication($Fraction2);
+// echo "Tích: ";
+// $multiplication -> display();
+// echo '<br>';
+$multiplication = $Fraction1 -> multiplication($Fraction2);
+echo "Tích: ";
+$multiplication -> display();
+echo '<br>';
+
+// $division = $Fraction1 -> division($Fraction2);
+// echo "Thương: ";
+// $division -> display();
+$division = $Fraction1 -> division($Fraction2);
+echo "Thương: ";
+$division -> display();
+
+
+
+// Câu 8: Bài tập Tạo lớp Người:
+// Tạo một lớp Nguoi với các thuộc tính tên, tuổi và địa chỉ.
+// Tạo phương thức để hiển thị thông tin người.
+
+    // class People{
+    //     public $name, $age, $address;
+    class People{
+        public $name, $age, $address;
+
+    //     public function __construct($name, $age, $address){
+    //         $this -> name = $name;
+    //         $this -> age = $age;
+    //         $this -> address = $address;
+    //     }
+        public function __construct($name, $age, $address){
+            $this -> name = $name;
+            $this -> age = $age;
+            $this -> address = $address;
+        }
+
+    //     public function displayInfomation(){
+    //         echo "Thông tin cá nhân:"."<br>";
+    //         echo "Họ và tên: ". $this->name ."<br>";
+    //         echo "Tuổi: ". $this->age ."<br>";
+    //         echo "Địa chỉ:". $this -> address ."<br>";
+    //     }
+    // }
+        public function displayInfomation(){
+            echo "Thông tin cá nhân:"."<br>";
+            echo "Họ và tên: ". $this->name ."<br>";
+            echo "Tuổi: ". $this->age ."<br>";
+            echo "Địa chỉ:". $this -> address ."<br>";
         }
     }
 
-    public function increaseMinutes($minutes) {
-        $this->minutes += $minutes;
+    // $People = new People("Phạm Văn Đoan", 21, "Hà Nội");
+    // $People -> displayInfomation();
+    $People = new People("Phạm Văn Đoan", 21, "Hà Nội");
+    $People -> displayInfomation();
 
-        if ($this->minutes >= 60) {
-            $this->increaseHours(floor($this->minutes / 60));
-            $this->minutes %= 60;
-        }
-    }
 
-    public function increaseHours($hours) {
-        $this->hours += $hours;
 
-        if ($this->hours >= 24) {
-            $this->hours %= 24;
-        }
-    }
-}
+@@ -120,25 +120,25 @@
+// Tạo một lớp SanPham với các thuộc tính tên, giá và mô tả.
+// Tạo phương thức để hiển thị thông tin chi tiết của sản phẩm.
 
-// Sử dụng lớp Đồng hồ
-$clock = new Clock(10, 30, 45);
-echo $clock->displayTime() . "\n"; 
+        // class Product{
+        //     public $name, $price, $description;
 
-$clock->increaseSeconds(15);
-echo $clock->displayTime() . "\n";
+        //     public function __construct ($name, $price, $description){
+        //         $this -> name = $name;
+        //         $this -> price = $price;
+        //         $this -> description = $description;
+        //     }
 
-$clock->increaseMinutes(45);
-echo $clock->displayTime() . "\n"; 
+        //     public function displayProduct(){
+        //         echo "Thông tin chi tiết sản phẩm:" . "<br />";
+        //         echo "Tên sản phẩm:". $this -> name . "<br />";
+        //         echo "Giá:". $this -> price . "<br />";
+        //         echo "Mô tả:". $this -> description ;
+        //     }
+        // }
 
-$clock->increaseHours(5);
-echo $clock->displayTime() . "\n"; 
+        // $Product = new Product("Điều hòa", 100000000, "Điều hòa hỏng");
+        // $Product -> displayProduct();
+        class Product{
+            public $name, $price, $description;
 
-Câu 5:
-class Student {
-protected $code;
-protected $fullname;
-
-public function __construct($id, $name) {
-$this->id = $id;
-$this->name = $name;
-}
-}
-class ListStudent {
-public $list = [];
-public function addStudent($student) {
-$this->list[] = $student;
-}
-public function showList() {
-foreach ($this->list as $student) {
-echo "Mã số: " . $student->id . ", Họ và tên: " . $student->name ."" . "<br>";
-}
-}
-}
-// Tạo đối tượng DanhSachSinhVien
-$listStudent = new liststudent();
-// Thêm sinh viên vào danh sách
-$sv1 = new Student("SV001", "Nguyen Van A");
-$sv2 = new Student("SV002", "Tran Thi B");
-$listStudent->addStudent($sv1);
-$listStudent->addStudent($sv2);
-// Hiển thị danh sách sinh viên
-$listStudent->showList();
-
-Câu 6:
-/ class Car {
- protected  $companyCar;
- protected  $color;
- protected  $manufacture;
-    
- public function __construct($companyCar, $color, $manufacture) 
- $this->companyCar = $companyCar;
- $this->color = $color;
- $this->manufacture = $manufacture;
-      }
-    
- public function show() {
- echo "Hãng xe: " . $this->companyCar . "<br>";
- echo "Màu sắc: " . $this->color . "<br>";
- echo "Năm sản xuất: " . $this->manufacture . "<br>";
-     }
-    }
- $car = new car('Toyota', 'Đen', 2020);
- $car->show();
-
-    
-
- Câu 8: 
-class Person {
-protected $name;
-    protected  $age;
-    protected  $address;
-            
-    public function __construct($name, $age, $address) 
-    {
-             $this->name = $name;
-             $this->age = $age;
-             $this->address = $address;
-          }
-            
-          public function show() {
-           echo "Tên: " . $this->name . "<br>";
-          echo "Tuổi: " . $this->age . "<br>";
-          echo "Địa chỉ: " . $this->address . "<br>";
+            public function __construct ($name, $price, $description){
+                $this -> name = $name;
+                $this -> price = $price;
+                $this -> description = $description;
             }
-         }
-          $person = new Person('Nguyen Van A', '22', 'An Mỹ');
-      $person->show();
-    
-Câu 9: 
- class Product {
- public $name;
- public $price;
- public $description;
- public function __construct($name, $price, $description) {
-        
- $this->name = $name;
- $this->price = $price;
- $this->description = $description;
-                   }
-    
- public function show() {
-        echo "Tên sản phẩm: " . $this->name . "<br>";
-        echo "Giá: " . $this->price . "<br>";
-        echo "Mô tả: " . $this->description. "<br>";
-        }
-    }
-    
-// Tạo một đối tượng sản phẩm
-    // $product = new Product('Samsung', '1400000', 'Đen');
-    // // Hiển thị thông tin chi tiết của sản phẩm
-    // $product->show();
-   
 
+            public function displayProduct(){
+                echo "Thông tin chi tiết sản phẩm:" . "<br />";
+                echo "Tên sản phẩm:". $this -> name . "<br />";
+                echo "Giá:". $this -> price . "<br />";
+                echo "Mô tả:". $this -> description ;
+            }
+        }
+
+        $Product = new Product("Điều hòa", 100000000, "Điều hòa hỏng");
+        $Product -> displayProduct();
